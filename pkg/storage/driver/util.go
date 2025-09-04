@@ -46,7 +46,7 @@ func encodeRelease(rls *rspb.Release) (string, error) {
 	}
 	var buf bytes.Buffer
 
-	w, err := zstd.NewWriter(&buf)
+	w, err := zstd.NewWriter(&buf, zstd.WithEncoderLevel(zstd.SpeedBestCompression))
 	if err != nil {
 		return "", err
 	}
